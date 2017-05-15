@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"model"
 
-	"action-dao-service/dao"
+	"dao-service/action-dao-service/dao"
 
 	"github.com/astaxie/beego"
 )
@@ -32,20 +32,15 @@ func (this *ActionService) GetAll(userId int64) ([]*model.Action, error) {
 	var actions []*model.Action
 
 	// get actions
-	beego.Debug("->get actions")
 	actions, err = actionDao.GetByUserId(userId)
 	if err != nil {
 		beego.Debug(err)
 		return nil, err
 	}
 
-	beego.Debug("result:")
 	for _, a := range actions {
 		a.User = nil
-		beego.Debug(*a)
 	}
-
-	//beego.Debug("result:", actions)
 
 	return actions, err
 }

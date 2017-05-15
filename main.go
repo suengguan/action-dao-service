@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "action-dao-service/routers"
+	_ "dao-service/action-dao-service/routers"
 
 	"model"
 

@@ -1,6 +1,6 @@
 // @APIVersion 1.0.0
-// @Title action_dao_service API
-// @Description action_dao_service only serve the ACTION_T
+// @Title action-dao-service API
+// @Description action-dao-service only serve the ACTION_T
 // @Contact qsg@corex-tek.com
 // @TermsOfServiceUrl http://beego.me/
 // @License Apache 2.0
@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"action-dao-service/controllers"
+	"dao-service/action-dao-service/controllers"
 
 	"github.com/astaxie/beego"
 )

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"action-dao-service/models"
-	"action-dao-service/service"
+	"dao-service/action-dao-service/models"
+	"dao-service/action-dao-service/service"
 	"encoding/json"
 	"fmt"
 	"model"
