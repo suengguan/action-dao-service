@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	base_url = "http://localhost:8000/v1/action"
+	base_url = "http://localhost:8080/v1/action"
 )
 
 func init() {
