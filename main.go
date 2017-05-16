@@ -9,8 +9,14 @@ import (
 )
 
 func main() {
-	err := model.InitEnv()
+	var cfg = beego.AppConfig
+	dbname := cfg.String("dbname")
+	dbdriver := cfg.String("dbdriver")
+	dbaccount := cfg.String("dbaccount")
+	dbaddr := cfg.String("dbaddr")
+	dbconnum, _ := cfg.Int64("dbconnum")
 
+	err := model.InitEnv(dbname, dbdriver, dbaccount, dbaddr, dbconnum)
 	if err != nil {
 		beego.Debug(err)
 		return

@@ -32,6 +32,7 @@ func (this *ActionService) GetAll(userId int64) ([]*model.Action, error) {
 	var actions []*model.Action
 
 	// get actions
+	beego.Debug("->get actions")
 	actions, err = actionDao.GetByUserId(userId)
 	if err != nil {
 		beego.Debug(err)
@@ -41,6 +42,8 @@ func (this *ActionService) GetAll(userId int64) ([]*model.Action, error) {
 	for _, a := range actions {
 		a.User = nil
 	}
+
+	beego.Debug("result:", actions)
 
 	return actions, err
 }

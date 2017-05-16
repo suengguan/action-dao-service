@@ -7,9 +7,10 @@ import (
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
 
-	"config"
 	"model"
 )
+
+var cfg = beego.AppConfig
 
 type ActionDao struct {
 	m_Orm        orm.Ormer
@@ -21,7 +22,7 @@ func NewActionDao() *ActionDao {
 	d := new(ActionDao)
 
 	d.m_Orm = orm.NewOrm()
-	d.m_Orm.Using(config.DB_NAME)
+	d.m_Orm.Using(cfg.String("dbname"))
 
 	d.m_QuerySeter = d.m_Orm.QueryTable(d.m_QueryTable)
 	d.m_QuerySeter.Limit(-1)
@@ -75,7 +76,22 @@ func (this *ActionDao) Update(action *model.Action) error {
 func (this *ActionDao) GetByUserId(userId int64) ([]*model.Action, error) {
 	var actions []*model.Action
 
+	beego.Debug("userid:", userId)
+	//num, err := this.m_QuerySeter.Filter("USER_ID", userId).RelatedSel().All(&actions)
+
+	//var action model.Action
+	//err := this.m_QuerySeter.Filter("ID", userId).One(&action)
+	//num, err := this.m_QuerySeter.Filter("DEV_TYPE", userId).All(&actions)
+	//num, err := this.m_QuerySeter.Filter("User", userId).RelatedSel().All(&actions)
 	num, err := this.m_QuerySeter.Filter("USER_ID", userId).RelatedSel().All(&actions)
+	// o := orm.NewOrm()
+	// o.Using("PME")
+	// var t *model.Action
+	// num, err := o.QueryTable(t).Filter("Usaer", 1).RelatedSel().All(&actions)
+	//num, err := this.m_QuerySeter.Filter("USER_ID", userId).All(&actions)
+	beego.Debug(num)
+	beego.Debug(err)
+	//beego.Debug(action)
 
 	if err != nil {
 		beego.Debug(num, err)
