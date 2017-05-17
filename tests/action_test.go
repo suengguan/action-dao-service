@@ -20,7 +20,7 @@ const (
 
 func init() {
 	orm.RegisterDriver("mysql", orm.DRMySQL)
-	orm.RegisterDataBase("default", "mysql", "root:corex123@tcp(117.122.198.151:3306)/PME?charset=utf8")
+	orm.RegisterDataBase("default", "mysql", "root:corex123@tcp(localhost:3306)/PME?charset=utf8")
 
 	o := orm.NewOrm()
 	o.Using("PME")
